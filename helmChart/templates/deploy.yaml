@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.labelValue }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.labelValue }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labelValue }}
+    spec:
+      containers:
+      - name: {{ .Values.labelValue }}
+        image: yunxizhang/dlt-react-app:1.0
+        ports:
+        - containerPort: 3000
+        env: 
+          - name: CI
+            value: "true"
+          - name: PORT
+            value: "3000"
+          - name: REACT_APP_API_MANAGEMENT_ENABLED
+            value: {{ .Values.env.REACT_APP_API_MANAGEMENT_ENABLED | quote }}
+          - name: REACT_APP_API_MANAGEMENT_SUBSCRIPTION_KEY
+            value: {{ .Values.env.REACT_APP_API_MANAGEMENT_SUBSCRIPTION_KEY | quote }}
+          - name: REACT_APP_BANK_API_HOSTNAME
+            value: {{ .Values.env.REACT_APP_BANK_API_HOSTNAME | quote }}
+          - name: REACT_APP_BANK_API_PORT
+            value: {{ .Values.env.REACT_APP_BANK_API_PORT | quote }}
+          - name: REACT_APP_BUYER_API_HOSTNAME
+            value: {{ .Values.env.REACT_APP_BUYER_API_HOSTNAME | quote }}
+          - name: REACT_APP_BUYER_API_PORT
+            value: {{ .Values.env.REACT_APP_BUYER_API_PORT | quote }}
+          - name: REACT_APP_SELLER_API_HOSTNAME
+            value: {{ .Values.env.REACT_APP_SELLER_API_HOSTNAME | quote }}
+          - name: REACT_APP_SELLER_API_PORT
+            value: {{ .Values.env.REACT_APP_SELLER_API_PORT | quote }}
+          - name: REACT_APP_APPINSIGHTS_KEY
+            value: {{ .Values.env.REACT_APP_APPINSIGHTS_KEY | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.labelValue }}
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: {{ .Values.labelValue }}

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: yunxizhang/dlt-react-app:1.0
+    container_name: dlt_react_app
+    volumes: 
+      - ${PWD}/.env:/app/.env
+    ports:
+      - 3000:3000
+    environment:
+      - CI=true
