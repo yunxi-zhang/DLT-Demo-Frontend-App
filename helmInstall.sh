@@ -8,7 +8,7 @@ kubectl create namespace ingress-nginx
 stepInfo "Add nginx helm chart repo"
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 stepInfo "Install nginx helm chart"
-helm install nginx-ingress ingress-nginx/ingress-nginx \
+helm install release1 ingress-nginx/ingress-nginx \
     --namespace ingress-nginx \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
