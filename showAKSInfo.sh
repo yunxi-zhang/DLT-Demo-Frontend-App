@@ -11,3 +11,5 @@ stepInfo "Get services with the new namespace"
 kubectl get svc --namespace ingress-nginx
 stepInfo "Get ingress with the new namespace"
 kubectl get ingress --namespace ingress-nginx
+stepInfo "Show helm releases"
+helm list --all-namespaces
