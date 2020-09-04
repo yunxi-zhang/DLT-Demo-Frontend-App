@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.labelValue }}
-        image: yunxizhang/dlt-react-app:1.0
+        image: yunxizhang/dlt-demo-frontend-app:0.1
         ports:
         - containerPort: 3000
         env: 
