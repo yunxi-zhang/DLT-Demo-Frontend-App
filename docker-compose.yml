@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   frontend:
-    image: yunxizhang/dlt-react-app:1.0
-    container_name: dlt_react_app
+    image: yunxizhang/dlt-demo-frontend-app:0.1
+    container_name: dlt-demo-frontend-app
     volumes: 
       - ${PWD}/.env:/app/.env
     ports:
