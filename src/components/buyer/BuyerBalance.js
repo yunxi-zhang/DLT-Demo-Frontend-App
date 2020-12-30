@@ -1,8 +1,8 @@
 import React from 'react';
-const BuyerDetail = ( { buyer } ) => {
+const BuyerBalance = ( { buyer } ) => {
   return (
     <b>{buyer.balance}</b>
   )
 }
 
-export default BuyerDetail;
+export default BuyerBalance;

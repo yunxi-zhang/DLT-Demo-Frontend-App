@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';                       
 import axios from 'axios';
 import SellerDetail from '../seller/SellerDetail';
-import BuyerDetail from '../buyer/BuyerDetail';
+import BuyerBalance from '../buyer/BuyerBalance';
 import { appInsights } from "../appSerivceInsight/appServiceInsight";
 require('dotenv').config();
 let getBuyerBalanceInBankAPI;
@@ -43,7 +43,7 @@ export default function Bank() {
         <Card.Body> 
           <Card.Title>Total Balance</Card.Title>
           <Card.Text>
-             <BuyerDetail buyer={buyer} />
+             <BuyerBalance buyer={buyer} />
           </Card.Text>
         </Card.Body>
       </Card>
