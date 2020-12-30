@@ -1,7 +1,7 @@
 import React from 'react';
 const BuyerBalance = ( { buyer } ) => {
   return (
-    <b>{buyer.balance}</b>
+    <em>{buyer.balance}</em>
   )
 }
 

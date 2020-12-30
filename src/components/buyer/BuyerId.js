@@ -1,7 +1,7 @@
 import React from 'react';
 const BuyerId = ( { buyer } ) => {
   return (
-    <b>Buyer-{buyer.id}</b>
+    <em>{buyer.id}</em>
   )
 }
 

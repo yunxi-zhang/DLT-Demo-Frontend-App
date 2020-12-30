@@ -3,6 +3,7 @@ import { Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import BuyerBalance from './BuyerBalance';
 import BuyerId from './BuyerId';
+import BuyerType from './BuyerType';
 import LoadingBar from "../loading/Loading";
 require('dotenv').config();
 let getBuyerBalanceAPI;
@@ -58,24 +59,21 @@ const Buyer = () => {
   return (
     <div>
       {
-        buyers.map((buyer) => (
+        buyers.map((buyer, index) => (
           <Card border="primary" className="text-center">
-            <Card.Header as="h3">
-              <BuyerId buyer={buyer} />
-            </Card.Header>
+            <Card.Header as="h3">Buyer-{index + 1}</Card.Header>
             <Card.Body>
               {caller ? (<LoadingBar />) : (
                 <div>
-                  <Card.Title>Total Balance</Card.Title>
-                  <Card.Text>
-                    <BuyerBalance buyer={buyer} />
-                  </Card.Text>
-                  <Form>
+                  <Card.Title><b>Id:</b><BuyerId buyer={buyer} /></Card.Title>
+                  <Card.Title><b>Total Balance:</b><BuyerBalance buyer={buyer} /></Card.Title>
+                  <Card.Title><b>Type:</b><BuyerType buyer={buyer} /></Card.Title>
+                  {/* <Form>
                     <Form.Group controlId="formBalance">
                       <Form.Control type="newBalance" placeholder="Enter New Balance" onChange={getNewBalance} />
                     </Form.Group>
                     <Button variant="primary" onClick={updateBalance}>Change Balance</Button>
-                  </Form>
+                  </Form> */}
                 </div>
               )}
             </Card.Body>
